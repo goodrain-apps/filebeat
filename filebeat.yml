@@ -1,0 +1,25 @@
+filebeat.config:
+  prospectors:
+    path: ${path.config}/prospectors.d/*.yml
+    reload.enabled: true
+  modules:
+    path: ${path.config}/modules.d/*.yml
+    reload.enabled: true
+
+# config file input
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - ${INPUT_PATH:/volume/*.log}
+
+processors:
+- add_cloud_metadata:
+
+output.elasticsearch:
+  hosts: ['${ES_HOST:127.0.0.1}:${ES_PORT:9200}']
+  username: ${ES_USERNAME:elastic}
+  password: ${ES_PASS:changeme}
+
+filebeat.modules:
+- module: nginx
