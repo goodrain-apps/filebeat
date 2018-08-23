@@ -6,6 +6,9 @@ filebeat.config:
     path: ${path.config}/modules.d/*.yml
     reload.enabled: true
 
+# enable dashboards
+setup.dashboards.enabled: true
+
 # config file input
 filebeat.inputs:
 - type: log
