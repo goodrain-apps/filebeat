@@ -24,5 +24,10 @@ output.elasticsearch:
   username: ${ES_USERNAME:elastic}
   password: ${ES_PASS:changeme}
 
+setup.kibana:
+  host: "${KIBANA_HOST:127.0.0.1}:${KIBANA_PORT:5601}"
+  username: "${ES_USERNAME:elastic}"
+  password: "${ES_PASS:changeme}"
+
 filebeat.modules:
 - module: nginx
