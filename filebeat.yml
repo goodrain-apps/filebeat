@@ -6,9 +6,6 @@ filebeat.config:
     path: ${path.config}/modules.d/*.yml
     reload.enabled: true
 
-# enable dashboards
-setup.dashboards.enabled: true
-
 # config file input
 filebeat.inputs:
 - type: log
@@ -19,15 +16,25 @@ filebeat.inputs:
 processors:
 - add_cloud_metadata:
 
+# enable dashboards
+setup.dashboards.enabled: true
+
 output.elasticsearch:
   hosts: ['${ES_HOST:127.0.0.1}:${ES_PORT:9200}']
   username: ${ES_USERNAME:elastic}
   password: ${ES_PASS:changeme}
-
+  index: "${INDEX_NAME:filebeat}-%{[beat.version]}-%{+yyyy.MM.dd}"
 setup.kibana:
-  host: "${KIBANA_HOST:127.0.0.1}:${KIBANA_PORT:5601}"
+  host: "http://5601.gr69034a.rilweic.ali-sh.goodrain.net:80"
   username: "${ES_USERNAME:elastic}"
   password: "${ES_PASS:changeme}"
 
+setup.template.name: "${INDEX_NAME:filebeat}"
+setup.template.pattern: "${INDEX_NAME:filebeat}-*"
+setup.dashboards.index: "${INDEX_NAME:filebeat}-*"
+
 filebeat.modules:
 - module: nginx
+- module: mysql
+- module: apache2
+- module: mongodb

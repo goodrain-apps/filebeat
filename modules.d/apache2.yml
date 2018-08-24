@@ -1,0 +1,7 @@
+- module: apache2
+  access:
+    enabled: true
+    var.paths: ["${APACHE2_ACCESS_LOG_PATH:/var/log/apache2/access.log*}","/var/log/httpd/access.log*"]
+  error:
+    enabled: true
+    var.paths: ["${APACHE2_ERROR_LOG_PATH:/var/log/apache2/error.log*}","/var/log/httpd/error.log*"]
