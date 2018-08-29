@@ -25,7 +25,7 @@ output.elasticsearch:
   password: ${ES_PASS:changeme}
   index: "${INDEX_NAME:filebeat}-%{[beat.version]}-%{+yyyy.MM.dd}"
 setup.kibana:
-  host: "http://5601.gr69034a.rilweic.ali-sh.goodrain.net:80"
+  host: "${KIBANA_HOST:127.0.0.1}:${KIBANA_PORT:127.0.0.1}"
   username: "${ES_USERNAME:elastic}"
   password: "${ES_PASS:changeme}"
 
