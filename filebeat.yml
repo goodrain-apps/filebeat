@@ -21,7 +21,7 @@ output.elasticsearch:
   hosts: ['${ES_HOST:127.0.0.1}:${ES_PORT:9200}']
   username: ${ES_USERNAME:elastic}
   password: ${ES_PASS:changeme}
-  index: "${INDEX_NAME:filebeat}-%{[beat.version]}-%{+yyyy.MM.dd}"
+  # index: "${INDEX_NAME:filebeat}-%{[beat.version]}-%{+yyyy.MM.dd}"
   timeout: 180
   backoff.max: 120
 
@@ -31,13 +31,15 @@ setup.kibana:
   username: "${ES_USERNAME:elastic}"
   password: "${ES_PASS:changeme}"
 
+setup.template.enabled: true
+
 # if you change output.elasticsearch you have to change this two settings
-setup.template.name: "${INDEX_NAME:filebeat}"
-setup.template.pattern: "${INDEX_NAME:filebeat}-*"
+# setup.template.name: "${INDEX_NAME:filebeat}"
+# setup.template.pattern: "${INDEX_NAME:filebeat}-*"
 
 # enable dashboards
 setup.dashboards.enabled: true
-setup.dashboards.index: "${INDEX_NAME:filebeat}-*"
+# setup.dashboards.index: "${INDEX_NAME:filebeat}-*"
 setup.dashboards.retry.enabled: true
 setup.dashboards.retry.interval: 3
 setup.dashboards.retry.maximum: 3
