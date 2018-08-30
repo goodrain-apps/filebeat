@@ -29,9 +29,9 @@ setup.kibana:
   username: "${ES_USERNAME:elastic}"
   password: "${ES_PASS:changeme}"
 
-setup.template.name: "${INDEX_NAME:filebeat}"
-setup.template.pattern: "${INDEX_NAME:filebeat}-*"
-setup.dashboards.index: "${INDEX_NAME:filebeat}-*"
+# setup.template.name: "${INDEX_NAME:filebeat}"
+# setup.template.pattern: "${INDEX_NAME:filebeat}-*"
+# setup.dashboards.index: "${INDEX_NAME:filebeat}-*"
 
 filebeat.modules:
 - module: nginx
