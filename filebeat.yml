@@ -42,7 +42,7 @@ setup.dashboards.enabled: true
 # setup.dashboards.index: "${INDEX_NAME:filebeat}-*"
 setup.dashboards.retry.enabled: true
 setup.dashboards.retry.interval: 3
-setup.dashboards.retry.maximum: 3
+setup.dashboards.retry.maximum: 20
 
 # enable modules
 filebeat.modules:
