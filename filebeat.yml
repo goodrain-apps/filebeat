@@ -23,15 +23,15 @@ output.elasticsearch:
   hosts: ['${ES_HOST:127.0.0.1}:${ES_PORT:9200}']
   username: ${ES_USERNAME:elastic}
   password: ${ES_PASS:changeme}
-  # index: "${INDEX_NAME:filebeat}-%{[beat.version]}-%{+yyyy.MM.dd}"
+  index: "${INDEX_NAME:filebeat}-%{[beat.version]}-%{+yyyy.MM.dd}"
 setup.kibana:
   host: "${KIBANA_HOST:127.0.0.1}:${KIBANA_PORT:5601}"
   username: "${ES_USERNAME:elastic}"
   password: "${ES_PASS:changeme}"
 
-# setup.template.name: "${INDEX_NAME:filebeat}"
-# setup.template.pattern: "${INDEX_NAME:filebeat}-*"
-# setup.dashboards.index: "${INDEX_NAME:filebeat}-*"
+setup.template.name: "${INDEX_NAME:filebeat}"
+setup.template.pattern: "${INDEX_NAME:filebeat}-*"
+setup.dashboards.index: "${INDEX_NAME:filebeat}-*"
 
 filebeat.modules:
 - module: nginx
