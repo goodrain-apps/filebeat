@@ -46,4 +46,4 @@ setup.dashboards.retry.maximum: 20
 
 # enable modules
 filebeat.modules:
-- module: mysql
+- module: nginx
