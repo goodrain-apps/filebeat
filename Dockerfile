@@ -5,3 +5,4 @@ USER root
 VOLUME ["/volume"]
 RUN chmod 777 /volume && \
 chown root:filebeat /usr/share/filebeat/filebeat.yml
+RUN chmod 644 /usr/share/filebeat/filebeat.yml
